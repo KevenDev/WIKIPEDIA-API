@@ -28,11 +28,15 @@ const getApiData = async (value) => {
       results.map((item) => {
       const wikititle = document.createElement('h1')
       const wikiresult = document.createElement('p')
+      const wikispan = document.createElement('a')
       wikiresult.setAttribute('id', item.id)
       wikititle.innerHTML = item.title;
       wikiresult.innerHTML = item.snippet;
+      wikispan.innerHTML = item.pageid
+      
       list.appendChild(wikititle)
       list.appendChild(wikiresult)
+      list.appendChild(wikispan)
       })
       renderResults(results)
       
