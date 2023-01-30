@@ -23,6 +23,17 @@ const getApiData = async (value) => {
   */ 
     fetch(`${url}${value}`).then((res => res.json())).then((data) => {
       const results = data.query.search
+
+      const list = document.querySelector('.results')
+      results.map((item) => {
+      const wikititle = document.createElement('h1')
+      const wikiresult = document.createElement('p')
+      wikiresult.setAttribute('id', item.id)
+      wikititle.innerHTML = item.title;
+      wikiresult.innerHTML = item.snippet;
+      list.appendChild(wikititle)
+      list.appendChild(wikiresult)
+      })
       renderResults(results)
       
     }) } 
