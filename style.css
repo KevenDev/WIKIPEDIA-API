@@ -1,0 +1,22 @@
+*{
+  box-sizing: border-box;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.container-wiki{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  } 
+
+.searchbar .btn-search{
+  width: 10rem;
+  height: 10rem;
+}
+
+.results{
+  display: grid;
+}
