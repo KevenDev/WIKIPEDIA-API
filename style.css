@@ -64,3 +64,41 @@ a{
   color: white;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 576px) {
+  .results{
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 2rem;
+  }
+
+  h1{
+    font-size: 40px;
+  }
+
+  .form-control{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-control input{
+    height: 4rem;
+    font-size: 1.5rem;
+  }
+
+  .form-control button{
+    height: 3rem;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .cards p{
+    font-size: 24px;
+    width: 80vw;
+  }
+
+  .img-wiki{
+    width: 40vw;
+  }
+}
