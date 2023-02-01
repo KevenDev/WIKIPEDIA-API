@@ -5,6 +5,7 @@ const resultsDOM = document.querySelector('.results')
 
 formDOM.addEventListener('submit',(e) => {
   e.preventDefault()
+  resultsDOM.innerHTML = ''
   const value = inputDOM.value
   if(!value){
     console.log('inexistente');
@@ -22,23 +23,31 @@ const getApiData = async (value) => {
     console.log(results);
   */ 
     fetch(`${url}${value}`).then((res => res.json())).then((data) => {
-      const results = data.query.search
-
-      const list = document.querySelector('.results')
+      const results = data.query.search;
+      const list = document.querySelector('.results');
       results.map((item) => {
-      const wikititle = document.createElement('h1')
-      const wikiresult = document.createElement('p')
-      const wikispan = document.createElement('a')
-      wikiresult.setAttribute('id', item.id)
+      let cards = document.createElement('div');
+      cards.setAttribute('class', 'cards')
+      const wikititle = document.createElement('h1');
+      const wikiresult = document.createElement('p');
+      const wikispan = document.createElement('a');
+      wikiresult.setAttribute('id', item.id);
       wikititle.innerHTML = item.title;
       wikiresult.innerHTML = item.snippet;
-      wikispan.innerHTML = item.pageid
-      
-      list.appendChild(wikititle)
-      list.appendChild(wikiresult)
-      list.appendChild(wikispan)
+      pageid = `https://en.wikipedia.org/wiki/?curid=${item.pageid}`;
+      wikispan.href = pageid;
+      wikispan.innerHTML = 'Leia Mais';
+      cards.appendChild(wikititle);
+      cards.appendChild(wikiresult);
+      cards.appendChild(wikispan);
+      list.appendChild(cards);
       })
+      if(results.length == 0){
+        alert('Digite algo válido')
+      }
+
       renderResults(results)
+      console.log(results)
       
     }) } 
    catch(err){ 
@@ -49,6 +58,8 @@ const getApiData = async (value) => {
 const renderResults = (callback) => {
   console.log(callback)
 } 
+
+
 
 
 
